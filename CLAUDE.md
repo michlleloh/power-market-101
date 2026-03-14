@@ -1,4 +1,8 @@
-# CLAUDE.md — Energy Markets Training Project
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
 
 ## Project
 
@@ -6,6 +10,14 @@ A self-contained, single-file HTML training programme for power and energy marke
 The file works offline on any device and OS. No build step. No dependencies.
 
 **File:** `energy-markets-training.html`
+
+---
+
+## Preview / Testing
+
+Open `energy-markets-training.html` directly in any browser — no server or build step required.
+
+To validate after changes: open in browser, then exercise the sidebar navigation, session panel, and glossary modal to confirm rendering and interactions are intact.
 
 ---
 
@@ -130,11 +142,30 @@ The entire programme lives in one HTML file. Key sections inside `<script>`:
 | `const MODS` | 11 module definitions with session ID lists |
 | `const META` | 32 session metadata objects |
 | `const ALL` | Alias for META — used by sidebar and curriculum builders |
+| `const TOTAL` | `ALL.length` — total session count used in progress calculations |
 | `const CONTENT` | Full session content, keyed by session ID (0–31) |
 | `const GLOSSARY` | 108 glossary terms with tags, definitions, and examples |
 | `const FILTERS` | Glossary filter tab definitions |
+| `const COUNTRY_ORDER` | Rendering order for country columns in comparison tables |
 | `const COMPARE` | 7 cross-market comparison tables |
-| Functions | `buildSb`, `buildCur`, `openPanel`, `renderGm`, `buildFbar`, `mkTag`, etc. |
+
+### Key Functions
+
+| Function | Purpose |
+|---|---|
+| `buildSb` | Builds the sidebar session list |
+| `buildCur` | Builds the main curriculum view |
+| `openPanel(id)` | Opens the session detail panel for session `id` |
+| `closePanel` | Closes the session detail panel |
+| `ckClick(id)` | Toggles completion checkbox for session `id`; calls `upd` |
+| `markBtn(id)` | Marks the current panel session complete from inside the panel |
+| `upd` | Recalculates progress and re-renders sidebar fill bar and topbar count |
+| `openSb` / `closeSb` | Mobile sidebar open/close |
+| `openGm` / `closeGm` | Opens/closes the glossary modal |
+| `buildFbar` | Builds the glossary filter tab bar |
+| `renderGm` | Renders glossary entries based on active filter and search |
+| `setF(k)` | Sets the active glossary filter key and re-renders |
+| `mkTag(key)` | Returns the HTML string for a single tag chip |
 
 ---
 
@@ -228,6 +259,8 @@ Each table has a `concept`, a `sub` description, and `rows` keyed by `c:` (count
 
 Country codes in COMPARE rows: `sgp`, `mys`, `kor`, `phl`, `chn`, `twn`
 
+> **Note:** `const FILTERS` includes a special `compare` key. This is a **pseudo-filter** — it does not exist as a tag in `const C`. Selecting it renders comparison tables instead of glossary terms. Do not add `compare` to `const C`.
+
 ---
 
 ## Design Principles
@@ -237,6 +270,19 @@ Country codes in COMPARE rows: `sgp`, `mys`, `kor`, `phl`, `chn`, `twn`
 - Tags should aid scanning, not clutter
 - Colour contrast must meet WCAG AA (minimum 4.5:1 for small text)
 - The file must remain a single self-contained HTML — no external dependencies
+
+---
+
+## Change Log Files
+
+Session-level changes are tracked in weekly Markdown files under `changelogs/`.
+
+- File naming: `changelogs/YYMMDD.md` — where the date is the **Monday** of that week
+- A new file is created at the start of each Monday week
+- **Always update the current week's log file after making any change to `energy-markets-training.html` or `CLAUDE.md`**
+- Each entry should include: the date, the file changed, and a short description of what changed and why
+
+Example filename for the week of Mon 9 Mar – Sun 15 Mar 2026: `changelogs/260309.md`
 
 ---
 
@@ -266,6 +312,14 @@ Country codes in COMPARE rows: `sgp`, `mys`, `kor`, `phl`, `chn`, `twn`
 - All 108 glossary entries re-tagged with energy-type and multi-tags
 - Tags ordered by relatedness within each `c:[]` array
 - FILTERS updated to full ISO labels (SGP, MYS, KOR, PHL, CHN, TWN)
+
+### v5 — CLAUDE.md documentation overhaul
+- Added required Claude Code guidance prefix
+- Added `## Preview / Testing` section
+- Added `const TOTAL` and `const COUNTRY_ORDER` to File Architecture table
+- Expanded function list into a dedicated `### Key Functions` table
+- Added note about `compare` pseudo-filter key in Comparison Tables section
+- Added `## Change Log Files` section with weekly log file naming convention
 
 ---
 
