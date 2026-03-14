@@ -9,13 +9,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A self-contained, single-file HTML training programme for power and energy markets analysts.
 The file works offline on any device and OS. No build step. No dependencies.
 
-**File:** `energy-markets-training.html`
+**File:** `power-market-101.html`
 
 ---
 
 ## Preview / Testing
 
-Open `energy-markets-training.html` directly in any browser — no server or build step required.
+Open `power-market-101.html` directly in any browser — no server or build step required.
 
 To validate after changes: open in browser, then exercise the sidebar navigation, session panel, and glossary modal to confirm rendering and interactions are intact.
 
@@ -279,7 +279,7 @@ Session-level changes are tracked in weekly Markdown files under `changelogs/`.
 
 - File naming: `changelogs/YYMMDD.md` — where the date is the **Monday** of that week
 - A new file is created at the start of each Monday week
-- **Always update the current week's log file after making any change to `energy-markets-training.html` or `CLAUDE.md`**
+- **Always update the current week's log file after making any change to `power-market-101.html` or `CLAUDE.md`**
 - Each entry should include: the date, the file changed, and a short description of what changed and why
 
 Example filename for the week of Mon 9 Mar – Sun 15 Mar 2026: `changelogs/260309.md`
